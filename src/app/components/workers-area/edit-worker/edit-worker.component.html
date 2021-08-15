@@ -1,0 +1,50 @@
+<div class="box">
+    <form #newWorkerForm="ngForm" (submit)="update()">
+        
+        <label>First Name: </label>
+        <input type="text" [formControl]="firstNameControl">
+        <span *ngIf="firstNameControl.errors?.required && firstNameControl.touched"><br/>First name is required!</span>
+        <span *ngIf="firstNameControl.errors?.pattern && firstNameControl.touched"><br/>First name requires first capital letter!</span>
+        <br/>
+        
+        <label>Last Name: </label>
+        <input type="text" [formControl]="lastNameControl">
+        <span *ngIf="lastNameControl.errors?.required && lastNameControl.touched"><br/>Last name is required!</span>
+        <span *ngIf="lastNameControl.errors?.pattern && lastNameControl.touched"><br/>Last name requires last capital letter!</span>
+        <br/>
+
+        <label>Title: </label>
+        <input type="text" [formControl]="titleControl">
+        <span *ngIf="titleControl.errors?.required && titleControl.touched"><br/>Title is required!</span>
+        <br/>
+
+        <label>Country: </label>
+        <input type="text"[formControl]="countryControl">
+        <span *ngIf="countryControl.errors?.required && countryControl.touched"><br/>Country is required!</span>
+        <br/>
+
+        <label>City: </label>
+        <input type="text" [formControl]="cityControl">
+        <span *ngIf="cityControl.errors?.required && cityControl.touched"><br/>City is required!</span>
+        <br/>
+
+        <label>Birth Date: </label>
+        <input type="date"[formControl]="birthDateControl">
+        <span *ngIf="birthDateControl.errors?.required && birthDateControl.touched"><br/>Birth Date is required!</span>
+        <br/>
+
+        <label>Image: </label>
+        <div>
+            <img [src]="image_url">
+        </div>
+        <!-- <input type="file" accept="image/*" [formControl]="imageControl" (change)="saveImage($event)" (blur)="loseFocus()" required/> -->
+        <input [(ngModel)]="imgValue" name="image" type="file" accept="image/*" (change)="saveImage($event)" (blur)="loseFocus()"/>
+        <!-- <span *ngIf="imageVisited && !worker.images">Image is required</span> -->
+        <br/>
+        
+        <button [disabled]="newWorkerForm.form.invalid">Submit</button>
+    </form>
+</div>
+
+<br/>
+<a routerLink="/workers" style="font-size: x-large;">Go back to workers list</a>

@@ -1,0 +1,22 @@
+div {
+    height: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns */
+    grid-template-rows: 15% 80% 5%; /* 3 rows */
+}
+
+header, footer { /* 2 parts */
+    grid-column: span 6; /* shrink 6 columns into 1 */
+}
+
+/* menu part - 1 part */
+/* UNDEFINED with span 1 */
+
+main { /* 1 part */
+    grid-column: span 5; /* shrink 5 columns into 1, leaving 1 in the row */
+}
+
+div, div > * {
+    border: 1px solid black;
+}

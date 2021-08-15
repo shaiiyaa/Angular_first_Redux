@@ -1,0 +1,20 @@
+<div>
+
+    <div *ngIf="!cutegories"></div>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+        </tr>
+        <tr *ngFor="let c of cutegories">
+            <td>{{c.name}}</td>
+            <td>{{c.description}}</td>
+            <td>
+                <img [src]="imageUrl + c.imageName" />
+            </td>
+        </tr>
+    </table>
+
+</div>

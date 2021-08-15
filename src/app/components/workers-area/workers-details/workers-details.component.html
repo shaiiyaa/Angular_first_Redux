@@ -1,0 +1,20 @@
+<div *ngIf="worker">
+   <div>
+        First Name: {{ worker.firstName }}<br/>
+        Last Name: {{ worker.lastName }}<br/>
+        Title: {{ worker.title }}<br/>
+        Country: {{ worker.country }}<br/>
+        City: {{ worker.city }}<br/>
+        Birth Date: {{ worker.birthDate }}<br/>
+    </div>
+    
+    <img [src]="image_api + worker.imageName">
+
+    <div>
+        <a routerLink="/workers" style="font-size: x-large;">Go back to workers list</a>
+        <br/><br/>
+        <button (click)="delete()">Delete Product</button>
+        <br/><br/>
+        <a routerLink="/workers/{{ worker.id }}/edit" style="font-size: x-large;">Edit</a>
+    </div>
+</div>

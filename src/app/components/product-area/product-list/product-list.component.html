@@ -1,0 +1,5 @@
+
+    <div>
+        <a routerLink="/products/new" style="font-size: x-large;">Add new product</a> <br/>
+        <app-product *ngFor="let p of products" [product]="p"></app-product>  
+    </div>

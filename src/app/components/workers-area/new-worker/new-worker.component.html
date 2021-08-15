@@ -1,0 +1,46 @@
+<div class="box">
+    <form #newWorkerForm="ngForm" (submit)="submit()">
+        
+        <label>First Name: </label>
+        <input type="text" #firstName_box="ngModel" [(ngModel)]="worker.firstName" name="firstName" required pattern="^[A-Z].*$">
+        <span *ngIf="firstName_box.errors?.required && firstName_box.touched"><br/>First name is required!</span>
+        <span *ngIf="firstName_box.errors?.pattern && firstName_box.touched"><br/>First name requires first capital letter!</span>
+        <br/>
+        
+        <label>Last Name: </label>
+        <input type="text" #lastName_box="ngModel" [(ngModel)]="worker.lastName" name="lastName" required pattern="^[A-Z].*$">
+        <span *ngIf="lastName_box.errors?.required && lastName_box.touched"><br/>Last name is required!</span>
+        <span *ngIf="lastName_box.errors?.pattern && lastName_box.touched"><br/>Last name requires last capital letter!</span>
+        <br/>
+
+        <label>Title: </label>
+        <input type="text" #title_box="ngModel" [(ngModel)]="worker.title" name="title" required>
+        <span *ngIf="title_box.errors?.required && title_box.touched"><br/>Title is required!</span>
+        <br/>
+
+        <label>Country: </label>
+        <input type="text" #country_box="ngModel" [(ngModel)]="worker.country" name="country" required>
+        <span *ngIf="country_box.errors?.required && country_box.touched"><br/>Country is required!</span>
+        <br/>
+
+        <label>City: </label>
+        <input type="text" #city_box="ngModel" [(ngModel)]="worker.city" name="city" required>
+        <span *ngIf="city_box.errors?.required && city_box.touched"><br/>City is required!</span>
+        <br/>
+
+        <label>Birth Date: </label>
+        <input type="date" #birthDate_box="ngModel" [(ngModel)]="worker.birthDate" name="birthDate" required>
+        <span *ngIf="birthDate_box.errors?.required && birthDate_box.touched"><br/>Birth Date is required!</span>
+        <br/>
+
+        <label>Image: </label>
+        <input type="file" accept="image/*" (change)="saveImage($event)" (blur)="loseFocus()" required/>
+        <span *ngIf="imageVisited && !worker.images">Image is required</span>
+        <br/>
+        
+        <button [disabled]="newWorkerForm.form.invalid">Submit</button>
+    </form>
+</div>
+
+<br/>
+<a routerLink="/workers" style="font-size: x-large;">Go back to workers list</a>

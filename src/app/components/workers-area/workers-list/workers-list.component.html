@@ -1,0 +1,21 @@
+
+<div class="page">
+    <a routerLink="/workers/new" style="font-size: x-large;">Add new worker</a> <br/>
+    <br/>
+
+    <div class="box" *ngFor="let w of workers">
+        <div class="card">
+            First Name: {{ w.firstName }}<br/>
+            Last Name: {{ w.lastName }}<br/>
+            Title: {{ w.title }}<br/>
+            Country: {{ w.country }}<br/>
+            City: {{ w.city }}<br/>
+            Birth Date: {{ w.birthDate }}<br/>
+        </div>
+        
+        <a [routerLink]="'/workers/' + w.id">
+            <img [src]="image_api + w.imageName">
+        </a>
+    </div> 
+</div>
+    

@@ -1,0 +1,34 @@
+<div class="box">
+    <form [formGroup]="formControl" (submit)="update()" style="text-align: center;">
+        
+        <label>Name: </label>
+        <input [formControl]="nameControl" type="text"/>
+        <span *ngIf="nameControl.errors?.required && nameControl.touched">Name is required!</span>
+        <span *ngIf="nameControl.errors?.pattern && nameControl.touched">Name requires first capital letter</span>
+        <br/>      
+       
+        <label>Price: </label>
+        <input [formControl]="priceControl" type="number"/>
+        <span *ngIf="priceControl.invalid && priceControl.touched">Price is required!</span>
+        <br/> 
+
+        <label>Stock: </label>
+        <input [formControl]="stockControl" type="number"/>
+        <span *ngIf="stockControl.invalid && stockControl.touched">Stock is required!</span>
+        <br/> 
+
+        <label>Image: </label>
+        <div>
+            <img [src]="image_url">
+        </div>
+        <input [formControl]="imageControl" type="file" accept="image/*" (change)="saveImage($event)" (blur)="loseFocus()"/>
+        <!-- <span *ngIf="imageVisited && !product.images">Image is required</span> -->
+        <br/> 
+
+        <button [disabled]="formControl.invalid">Submit</button>
+
+    </form>
+
+</div>
+<br/>
+<a routerLink="/products" style="font-size: x-large;">Go back to product list</a>
